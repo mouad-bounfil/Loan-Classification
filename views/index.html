@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Approval Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-900">Loan Prediction</h1>
+        <p class="text-gray-600 mt-1">
+          Fill in the form below to predict loan approval.
+        </p>
+      </div>
+
+      <form
+        id="prediction-form"
+        class="bg-white p-6 sm:p-8 rounded-xl shadow-md border border-gray-200"
+      >
+        <!-- Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <!-- Age -->
+          <div>
+            <label for="age" class="block text-sm font-medium text-gray-700"
+              >Age</label
+            >
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="18"
+              max="100"
+              required
+              placeholder="e.g. 32"
+              class="mt-1 w-full p-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400"
+            />
+          </div>
+
+          <!-- Gender -->
+          <div>
+            <label for="gender" class="block text-sm font-medium text-gray-700"
+              >Gender</label
+            >
+            <select
+              id="gender"
+              name="gender"
+              required
+              class="mt-1 w-full p-2.5 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400"
+            >
+              <option value="" disabled selected>Select gender</option>
+              <!-- respects dataset values -->
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+          <!-- Occupation -->
+          <div>
+            <label
+              for="occupation"
+              class="block text-sm font-medium text-gray-700"
+              >Occupation</label
+            >
+            <select
+              id="occupation"
+              name="occupation"
+              required
+              class="mt-1 w-full p-2.5 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400"
+            >
+              <option value="" disabled selected>Select occupation</option>
+              <!-- respects dataset values -->
+              <option value="Accountant">Accountant</option>
+              <option value="Analyst">Analyst</option>
+              <option value="Architect">Architect</option>
+              <option value="Artist">Artist</option>
+              <option value="Banker">Banker</option>
+              <option value="Chef">Chef</option>
+              <option value="Consultant">Consultant</option>
+              <option value="Dentist">Dentist</option>
+              <option value="Designer">Designer</option>
+              <option value="Doctor">Doctor</option>
+              <option value="Editor">Editor</option>
+              <option value="Electrician">Electrician</option>
+              <option value="Engineer">Engineer</option>
+              <option value="HR">HR</option>
+              <option value="IT">IT</option>
+              <option value="Lawyer">Lawyer</option>
+              <option value="Manager">Manager</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Musician">Musician</option>
+              <option value="Nurse">Nurse</option>
+              <option value="Pharmacist">Pharmacist</option>
+              <option value="Photographer">Photographer</option>
+              <option value="Pilot">Pilot</option>
+              <option value="Professor">Professor</option>
+              <option value="Programmer">Programmer</option>
+              <option value="Receptionist">Receptionist</option>
+              <option value="Researcher">Researcher</option>
+              <option value="Realtor">Realtor</option>
+              <option value="Sales">Sales</option>
+              <option value="Salesman">Salesman</option>
+              <option value="Server">Server</option>
+              <option value="Software">Software</option>
+              <option value="Student">Student</option>
+              <option value="Stylist">Stylist</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Veterinarian">Veterinarian</option>
+              <option value="Writer">Writer</option>
+            </select>
+          </div>
+
+          <!-- Education Level -->
+          <div>
+            <label
+              for="education_level"
+              class="block text-sm font-medium text-gray-700"
+              >Education level</label
+            >
+            <select
+              id="education_level"
+              name="education_level"
+              required
+              class="mt-1 w-full p-2.5 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400"
+            >
+              <option value="" disabled selected>Select education</option>
+              <!-- respects dataset values -->
+              <option value="High School">High School</option>
+              <option value="Associate's">Associate's</option>
+              <option value="Bachelor's">Bachelor's</option>
+              <option value="Master's">Master's</option>
+              <option value="Doctoral">Doctoral</option>
+            </select>
+          </div>
+
+          <!-- Marital Status -->
+          <div>
+            <label
+              for="marital_status"
+              class="block text-sm font-medium text-gray-700"
+              >Marital status</label
+            >
+            <select
+              id="marital_status"
+              name="marital_status"
+              required
+              class="mt-1 w-full p-2.5 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400"
+            >
+              <option value="" disabled selected>Select status</option>
+              <!-- respects dataset values -->
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+            </select>
+          </div>
+
+          <!-- Income -->
+          <div>
+            <label for="income" class="block text-sm font-medium text-gray-700"
+              >Income (yearly)</label
+            >
+            <input
+              type="number"
+              id="income"
+              name="income"
+              min="0"
+              step="1000"
+              required
+              placeholder="e.g. 85000"
+              class="mt-1 w-full p-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400"
+            />
+          </div>
+
+          <!-- Credit Score -->
+          <div class="sm:col-span-2">
+            <label
+              for="credit_score"
+              class="block text-sm font-medium text-gray-700"
+              >Credit score</label
+            >
+            <input
+              type="number"
+              id="credit_score"
+              name="credit_score"
+              min="300"
+              max="3000"
+              required
+              placeholder="e.g. 720"
+              class="mt-1 w-full p-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400"
+            />
+            <p class="text-xs text-gray-500 mt-1">Typical range: 300–850</p>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <button
+            type="submit"
+            class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gray-900 text-white font-medium hover:bg-gray-800 transition"
+          >
+            Predict
+          </button>
+          <button
+            type="reset"
+            class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition"
+          >
+            Reset
+          </button>
+        </div>
+
+        <!-- Result box (optional UI) -->
+        <div
+          id="result"
+          class="mt-6 hidden rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-800"
+        ></div>
+      </form>
+
+      <script>
+        const form = document.getElementById("prediction-form");
+        const resultBox = document.getElementById("result");
+
+        function showLoading() {
+          resultBox.classList.remove("hidden");
+          resultBox.innerHTML = `
+            <div class="flex items-center gap-3">
+              <span class="inline-block h-3 w-3 rounded-full bg-gray-400 animate-bounce"></span>
+              <span class="inline-block h-3 w-3 rounded-full bg-gray-400 animate-bounce [animation-delay:150ms]"></span>
+              <span class="inline-block h-3 w-3 rounded-full bg-gray-400 animate-bounce [animation-delay:300ms]"></span>
+              <span class="ml-2 text-gray-600">
+                We’re analyzing your application 🤖
+              </span>
+            </div>
+            <p class="mt-2 text-xs text-gray-500">
+              Please wait a moment, our AI is thinking…
+            </p>
+          `;
+        }
+
+        function showResult(prediction) {
+          const isApproved = prediction.toLowerCase().includes("approved");
+
+          resultBox.innerHTML = `
+            <div class="text-lg font-semibold ${
+              isApproved ? "text-green-600" : "text-red-600"
+            }">
+              ${isApproved ? "🎉 Good news!" : "😕 Hmm… not this time"}
+            </div>
+      
+            <p class="mt-2 text-gray-700">
+              ${
+                isApproved
+                  ? "Your loan application looks solid and has been approved."
+                  : "After reviewing your application, the loan was unfortunately not approved."
+              }
+            </p>
+      
+            <p class="mt-1 text-sm text-gray-500">
+              Decision made by our AI-based credit analysis system.
+            </p>
+          `;
+        }
+
+        function showError() {
+          resultBox.classList.remove("hidden");
+          resultBox.innerHTML = `
+            <p class="text-red-600 font-medium">
+              ⚠️ Oops! Something went wrong.
+            </p>
+            <p class="text-sm text-gray-500 mt-1">
+              Please try again in a few moments.
+            </p>
+          `;
+        }
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const fd = new FormData(form);
+          const data = Object.fromEntries(fd.entries());
+          // Convert numeric fields to float before sending
+          data.age = parseFloat(data.age);
+          data.credit_score = parseFloat(data.credit_score);
+          data.income = parseFloat(data.income);
+
+          console.log(data);
+          showLoading();
+
+          try {
+            const response = await fetch("/predict", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+
+            const result_data = await response.json();
+
+            if (response.ok) {
+              // Small delay to make AI feel like it's "thinking"
+              setTimeout(() => {
+                showResult(result_data.prediction);
+              }, 1200);
+            } else {
+              showError();
+            }
+          } catch (err) {
+            showError();
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
